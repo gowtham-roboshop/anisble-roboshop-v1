@@ -1,5 +1,6 @@
 - name: configure catalogue server
   hosts: catalogue
+  become: yes
   tasks:
   - name: disable default nodejs
     command: dnf module disable nodejs -y
@@ -56,7 +57,7 @@
       src: catalogue.service.j2
       dest: /etc/systemd/system/catalogue.service
 
-   - name: copy mongo repo
+  - name: copy mongo repo
     copy:
       src: mongo.repo
       dest: /etc/yum.repos.d/mongo.repo
