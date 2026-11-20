@@ -1,3 +1,16 @@
 ansible_user: ec2-user
 ansible_password: DevOps321
+mongodb_host: mongodb.grobo.online
+redis_host: redis.grobo.online
+mysql_host: mysql.grobo.online
+rabbitmq_host: rabbitmq.grobo.online
+catalogue_host: catalogue.grobo.online
+user_host: user.grobo.online
+cart_host: cart.grobo.online
+shipping_host: shipping.grobo.online
+payment_host: payment.grobo.online
 mysql_root_password: RoboShop@1
+shipping_db_user: shipping
+shipping_db_password: RoboShop@1
+rabbitmq_user: roboshop
+rabbitmq_password: roboshop123
