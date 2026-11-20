@@ -16,9 +16,9 @@
       - roboshop-common
       - "roboshop-{{ item }}"
       region: us-east-1
-      loop: "{{ instances }}"
-      when: action == "create"
-      register: ec2_output    
+    loop: "{{ instances }}"
+    when: action == "create"
+    register: ec2_output    
 
   - name: create r53 record
     amazon.aws.route53:
@@ -41,8 +41,9 @@
       ttl: 1
       value: "{{ item.instances[0].public_ip_address }}"
       overwrite: true
-      loop: "{{ ec2_output.results }}"
-      when: action == "create" and item.item == "frontend"
+    loop: "{{ ec2_output.results }}"
+    when: action == "create" and item.item == "frontend"
+    
   - name: delete R53 records
     amazon.aws.route53:
       state: absent
@@ -71,4 +72,3 @@
     loop: "{{ instances }}"
     when: action == "delete"
 
-    
